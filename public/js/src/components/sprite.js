@@ -113,18 +113,27 @@ class Sprite{
 
     }
 
-    constructor(sprite, user= null, location= {x: 100, y: 100 }, locationBoundaries= {top: 0, bottom:1000, left: 0, right: 1000 },size= {x: 64, y: 64}){
+    constructor(sprite, user= null, location= {x: 100, y: 100 }, canvas ,size= {x: 64, y: 64}){
         this.img = document.createElement('img')
         this.img.src = sprite
         this.user = user
         this.location = location
-        this.locationBoundaries = locationBoundaries
+        this.canvas = canvas
         this.size = size
         this.animationStrategy = AnimationStrategy
         this._activeState = Sprite.Image.states.STANDING_DOWN
         this.constructAnimators()
         this.imgPos = this.activeAnimator.frame(0)
         this.activeAnimator.start()
+    }
+
+    get locationBoundaries(){
+        return {
+            top: 0,
+            bottom: this.canvas.height,
+            left: 0,
+            right: this.canvas.width
+        }
     }
 
     constructAnimators(){
@@ -146,25 +155,25 @@ class Sprite{
                 Sprite.Image.StandDown,
                 Sprite.Image.WalkDown2,
                 Sprite.Image.StandDown
-            ], 4, {x: 0, y: 35}),
+            ], 4, {x: 0, y: 85}),
             new this.animationStrategy([
                 Sprite.Image.WalkRight1,
                 Sprite.Image.StandRight,
                 Sprite.Image.WalkRight2,
                 Sprite.Image.StandRight
-            ], 4, {x: 35, y: 0}),
+            ], 4, {x: 85, y: 0}),
             new this.animationStrategy([
                 Sprite.Image.WalkLeft1,
                 Sprite.Image.StandLeft,
                 Sprite.Image.WalkLeft2,
                 Sprite.Image.StandLeft
-            ], 4, {x: -35, y: 0}),
+            ], 4, {x: -85, y: 0}),
             new this.animationStrategy([
                 Sprite.Image.WalkUp1,
                 Sprite.Image.StandUp,
                 Sprite.Image.WalkUp2,
                 Sprite.Image.StandUp
-            ], 4, {x: 0, y: -35})
+            ], 4, {x: 0, y: -85})
         ]
     }
 

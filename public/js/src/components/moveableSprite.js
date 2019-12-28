@@ -1,7 +1,7 @@
 class MoveableSprite extends Sprite{
 
-    constructor(sprite, user, location, locationBoundaries){
-        super(sprite, user, location, locationBoundaries)
+    constructor(sprite, user, location, canvas, size){
+        super(sprite, user, location, canvas, size)
         this.arrowsPressed = []
         // this.sprite = new Sprite('public/assets/sprites/Male/Male\ 01-2.png', null, {x: 100, y: 100}, {
         //     top: 0, bottom: this.canvas.height, left: 0, right: this.canvas.width

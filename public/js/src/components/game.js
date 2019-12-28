@@ -30,9 +30,7 @@ class Game extends PageManager{
         this.gameContainer = document.createElement('div')
         this.gameContainer.id = 'game-container'
         this.state = Game.GameState.start
-        this.sprite = new MoveableSprite('public/assets/sprites/Male/Male\ 01-2.png', null, {x: 100, y: 100}, {
-            top: 0, bottom: this.canvas.height, left: 0, right: this.canvas.width
-        })
+        this.sprite = new MoveableSprite('public/assets/sprites/Male/Male\ 01-2.png', null, {x: 100, y: 100}, this.canvas)
         this.initBindingsAndEventListeners()
     }
 
@@ -52,8 +50,6 @@ class Game extends PageManager{
     canvasSetup(){
         this.canvas.width = this.gameContainer.clientWidth
         this.canvas.height = this.gameContainer.clientHeight
-        this.sprite.locationBoundaries.bottom = this.canvas.height
-        this.sprite.locationBoundaries.right = this.canvas.width
         this.ctx = this.canvas.getContext('2d')
     }
 
