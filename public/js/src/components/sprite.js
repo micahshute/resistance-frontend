@@ -178,7 +178,6 @@ class Sprite{
 
     set activeState(state){
         if(state !== this._activeState){
-            console.log(state)
             this.activeAnimator.stop()
             this._activeState = state
             this.activeAnimator.start()
