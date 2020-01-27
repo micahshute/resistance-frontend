@@ -26,11 +26,15 @@ main{
 
 
 canvas{
-    background: black;
+    background: rgb(10, 0, 0);
     border: 1px solid white;
+}
+
+img{
+    border: 5px solid rgb(119, 150, 207);
 }
 
 @font-face {
     font-family: 'WarFont';
-    src: url('/public/assets/fonts/war_font.ttf');
+    src: url('../assets/fonts/war_font.ttf');
 }

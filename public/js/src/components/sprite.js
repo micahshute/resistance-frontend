@@ -118,13 +118,17 @@ class Sprite{
         this.img.src = sprite
         this.user = user
         this.location = location
-        this.canvas = canvas
+        this._canvas = canvas 
         this.size = size
         this.animationStrategy = AnimationStrategy
         this._activeState = Sprite.Image.states.STANDING_DOWN
         this.constructAnimators()
         this.imgPos = this.activeAnimator.frame(0)
         this.activeAnimator.start()
+    }
+
+    get canvas(){
+        return this._canvas || document.querySelector('canvas')
     }
 
     get locationBoundaries(){
@@ -134,6 +138,10 @@ class Sprite{
             left: 0,
             right: this.canvas.width
         }
+    }
+
+    locationIsWithinSprite({x,y}){
+        return ((x >= this.location.x) && (x <= (this.location.x + this.size.x))) && ((y >= this.location.y) && (y <= (this.location.y + this.size.y)))
     }
 
     constructAnimators(){
